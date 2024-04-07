@@ -1,10 +1,15 @@
+# The class defines an EmailAssistant that utilizes the Anthropic API to generate AI responses based
+# on user profiles and email data.
 import json
 from anthropic import Anthropic
 import pandas as pd
 from typing import List
 import os
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+
 class UserProfile:
+    # This Python class `UserProfile` represents a user profile with attributes such as age, gender,
+    # organization role, relative business, and priority for emails.
     def __init__(self, age: int, gender: str, org_role: str, relative_business: str, priority_for_emails: List[str]):
         self.age = age
         self.gender = gender
@@ -12,11 +17,13 @@ class UserProfile:
         self.relative_business = relative_business
         self.priority_for_emails = priority_for_emails
 class EmailAssistant:
+    # The EmailAssistant class prepares email data and user profile information to generate AI responses
+    # for email-related queries.
     def __init__(self, user_profile: UserProfile, email_json_path: str, base_system_prompt: str):
         self.user_profile = user_profile
         self.email_data = pd.read_json(email_json_path)
         self.base_system_prompt = base_system_prompt
-        self.client = Anthropic(api_key='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')
+        self.client = Anthropic(api_key=ANTHROPIC_API_KEY)
     def generate_system_prompt_with_profile(self) -> str:
         profile_details = (
             f"The user is a {self.user_profile.age} year old {self.user_profile.gender}, "
