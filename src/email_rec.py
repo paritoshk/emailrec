@@ -40,7 +40,7 @@ class EmailAssistant:
         summaries = []
         for email_dict in self.email_data.emails:
             # email_dict is already a dictionary here, so you can directly access its keys
-            summary = f"Email from {email_dict['from']} to {email_dict['to']}, subject: {email_dict['subject']}, received at {email_dict['deliveredAt']} with snippet {email_dict['snippet']}."
+            summary = f"Email from {email_dict['from']} , subject: {email_dict['subject']}, received at {email_dict['deliveredAt']} with snippet {email_dict['snippet']}."
             summaries.append(summary)
         return " ".join(summaries)
     def generate_ai_response(self, user_input: str) -> str:
@@ -60,17 +60,19 @@ class EmailAssistant:
 if __name__ == "__main__":
         # Example Usage:
     base_system_prompt = """
-    You are a friendly and motivational email management assistant, and responder for corporates working in tech like product and program managers, founders, and senior executives. 
-    You help prioritize emails based on urgency, the user's schedule, and predefined preferences. You are capable of suggesting responses to key emails and providing summaries of emails when requested.
+    You are a friendly and motivational email management assistant,
+    and responder for corporate professionals working in tech like product 
+    and program managers, founders, and senior executives. 
+    You help prioritize emails based on urgency, the user's schedule,
+    and predefined preferences and curated. You are capable of suggesting 
+    responses to key emails and providing summaries of emails when requested.
     """
-
     user_profile = UserProfile(
         age=35, 
         gender="Non-binary", 
         org_role="Product Manager", 
         relative_business="Tech Startups", 
         priority_for_emails=["urgent", "deadline", "meeting"])
-
     email_assistant = EmailAssistant(user_profile, "data/emails.json", base_system_prompt)
     user_input = "Based on my schedule and priorities, what are some of my top three emails for today? Which one should I read and respond to the most?"
     ai_response = email_assistant.generate_ai_response(user_input)
