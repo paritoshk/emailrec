@@ -50,6 +50,7 @@ class EmailAssistant:
             messages=[{"role": "user", "content": user_input}],
             system=system_prompt,
             max_tokens=2500,
+            temperature=0.1
         )
         return response.content[0].text
 
