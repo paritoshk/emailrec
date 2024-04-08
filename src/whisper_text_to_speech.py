@@ -32,7 +32,7 @@ class TextToSpeechConverter:
         self.output_dir.mkdir(exist_ok=True)  # Ensure output directory exists
     def convert_to_speech(self, text, output_filename):
         # Define the full path for the output file
-        output_file_path = self.output_dir / f"{output_filename}.wav" 
+        output_file_path = self.output_dir / f"{output_filename}.mp3" 
         # Create the audio speech
         response = self.client.audio.speech.create(
             model="tts-1",
@@ -52,4 +52,4 @@ if __name__ == "__main__":
                             I'm here to help you navigate through your busy inbox with ease. 
                             Let's focus on what matters most today. 
                             For starters, you might want to ask, 'What are my top three emails for today?'"""
-    tts_converter.convert_to_speech(USER_PERSONA_TEXT_MAX, "MAX_PERSONA")
+    tts_converter.convert_to_speech(greeting_message, "greeting_message")
