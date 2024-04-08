@@ -37,13 +37,13 @@ class GetUserData:
             max_tokens=300,  # Adjust based on your expected output length
             response_format={"type": "json_object"}  # Ensure this parameter is used correctly according to API documentation
         )
-        extracted_info= completion.choices[0].message
+        extracted_info= completion.choices[0].message.content
         return extracted_info
         
 if __name__ == "__main__":
     user_data_getter = GetUserData()
     # Path to your audio file
-    audio_file_path = "data/test_file.mp3"
+    audio_file_path = "data/AVA_PERSONA.mp3"
     # Step 1: Transcribe Audio
     transcription_result = user_data_getter.transcribe_audio(audio_file_path)
     transcription_text = transcription_result # Adjust based on actual key in response

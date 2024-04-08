@@ -5,7 +5,7 @@ import os
 OPENAI_API_KEY = os.getenv("OPEN_AI_API_KEY")
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-USER_PERSONA_TEXT ="""I'm Ava, founder and CEO of GigaMinds, a SF startup. 
+USER_PERSONA_TEXT_AVA ="""I'm Ava, founder and CEO of GigaMinds, a SF startup. 
 We're a team of 10, hustling to make AI dreams a reality. 
 My days are a whirlwind of coding, steering the ship, and chasing funding.
 Right now, my focus is on securing our next round. 
@@ -16,6 +16,15 @@ splashing colors at my best friend's atelier, experimenting with coffee,
 or dancing at a good rave - so make sure I don't miss out when my favorite DJs
 are playing in town. 
 I am a 28 years old female."""
+USER_PERSONA_TEXT_MAX = """I'm Max, a 35-year-old software engineer, a tech company near Seattle. 
+I am a senior developer at BinaryBeats, a Series A stage remote first company. 
+My role here is to ensure our tech is firing on all cylinders, 
+from debugging to pushing the boundaries of innovation. Currently, 
+my focus is on optimizing our app's performance, 
+diving deep into projects that involve revamping UI/UX and integrating cutting-edge AI technology.
+I'm based remotely in a cozy rural area of Washington.
+Outside of the coding realm, you'll find me shredding on my skateboard, 
+or getting lost in the latest tech gadgets."""
 class TextToSpeechConverter:
     def __init__(self, api_key, output_dir="data"):
         self.client = OpenAI(api_key=api_key)
@@ -27,7 +36,7 @@ class TextToSpeechConverter:
         # Create the audio speech
         response = self.client.audio.speech.create(
             model="tts-1",
-            voice="nova",
+            voice="onyx",
             input=text
         )
         # Save the binary audio content to the file
@@ -43,4 +52,4 @@ if __name__ == "__main__":
                             I'm here to help you navigate through your busy inbox with ease. 
                             Let's focus on what matters most today. 
                             For starters, you might want to ask, 'What are my top three emails for today?'"""
-    tts_converter.convert_to_speech(greeting_message, "greeting_message")
+    tts_converter.convert_to_speech(USER_PERSONA_TEXT_MAX, "MAX_PERSONA")
