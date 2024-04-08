@@ -1,6 +1,7 @@
 # emailrec
 Recommendation system for email answering using voice commands, flow engineering and RAG with LLMs and Elevenlabs
-### SRC
+
+![image](https://github.com/paritoshk/emailrec/assets/9400939/e3e9dba2-d46b-4531-8aa7-c9b6d56030ee)
 
 #### Objective
 
@@ -51,3 +52,14 @@ The code is structured around the two classes (`UserProfile` and `EmailAssistant
 4. Run the script to see the prioritized emails and recommendations based on the user's profile and provided email data.
 
 This project demonstrates the potential of integrating advanced AI capabilities into daily workflows, specifically for email management, leveraging user-specific data to tailor recommendations and enhance productivity.
+
+## Challenges 
+To enhance user experience with email management, we developed a voice-driven flow, eliminating the need for typing. The process commences with a greeting through Text-to-Speech, setting an engaging tone. Subsequently, OpenAI’s Whisper model transcribes the user’s spoken words, capturing their profile and objectives, like prioritizing emails. This transcription aids in tailoring the experience without manual input, aligning with our aim for simplicity.
+Our core challenge was formulating a personalized recommendation system for email prioritization. Traditional methods like two-tower or collaborative filtering fell short in aligning with individual user goals. To address this, we employed Claude 3, chosen over GPT-4 for its superior alignment at handling single-user scenarios, even at similar temperatures. Through meticulous prompt and flow engineering, coupled with Rapid Automatic Generation (RAG) prototyping, we achieved a system that effectively curates a top email list reflective of the user’s persona and voiced needs.
+The biggest technical hurdle was refining Claude’s prompt design to yield accurate recommendations, ensuring relevance and priority were assessed correctly. Deploying a seamless front-end experience and integrating the backend AI into a production environment also presented challenges, which we overcame through iterative testing and refinement.
+
+
+
+
+
+
