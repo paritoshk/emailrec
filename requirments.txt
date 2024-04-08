@@ -1,4 +1,6 @@
 openai
 anthropic
 pandas
-json
+pydub
+pathlib
+streamlit-audiorecorder

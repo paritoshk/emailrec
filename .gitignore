@@ -1,3 +1,8 @@
 .vscode
 .env
 .vscode/settings.json
+src/__pycache__
+app,py
+requirements.txt
+packages.txt
+.DS_Store
